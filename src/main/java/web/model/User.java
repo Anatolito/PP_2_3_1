@@ -14,6 +14,9 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "surname")
+    private String surname;
+
     @Column(name = "age")
     private int age;
 
@@ -47,6 +50,14 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override

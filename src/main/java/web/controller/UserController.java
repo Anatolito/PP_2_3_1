@@ -14,49 +14,41 @@ public class UserController {
 
     private final UserService userService;
 
+    String redirect = "redirect:/";
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping
-    public String index(Model model) {
+    @RequestMapping
+    public String allUsers(Model model) {
         model.addAttribute("allUsers", userService.getAllUsers());
         return "index";
     }
 
-    @GetMapping(value = "/{id}")
-    public String showUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.getUser(id));
-        return "show";
+    @RequestMapping("/new")
+    public String newUser(Model model) {
+        model.addAttribute("newUser", new User());
+        return "userInfo";
     }
 
-    @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
-        return "new";
-    }
-
-    @PostMapping()
+    @RequestMapping("/saveUser")
     public String createUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
-        return "redirect:/";
+        return redirect;
     }
 
-    @GetMapping("/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") int id) {
-        model.addAttribute("user", userService.getUser(id));
-        return "edit";
+    @RequestMapping("/updateUser")
+    public String updateUser(Model model, @RequestParam("userId") int id) {
+        User user = userService.getUser(id);
+        model.addAttribute("newUser", user);
+        return "userInfo";
     }
 
-    @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
-        userService.updateUser(id, user);
-        return "redirect:/";
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestParam("userId") int id) {
         userService.deleteUser(id);
-        return "redirect:/";
+        return redirect;
     }
 }
