@@ -18,22 +18,22 @@
   <div  th:each="userS : ${allUsers}">
 
     <tr>
-      <td th:text="${userS.name}" >nameSell</td>
+      <td th:text="${userS.userName}" >nameSell</td>
 
-      <td th:text="${userS.surname}" >surnameSell</td>
+      <td th:text="${userS.userSurname}" >surnameSell</td>
 
-      <td th:text="${userS.age}" >ageSell</td>
+      <td th:text="${userS.userAge}" >ageSell</td>
 
       <td>
-        <form th:action="@{/updateUser}" method="get">
-          <input type="hidden" name="userId" th:value="${userS.id}"/>
+        <form th:action="@{users/updateUser}" method="get">
+          <input type="hidden" name="userId" th:value="${userS.userId}"/>
           <button type="submit">Update</button>
         </form>
       </td>
 
       <td>
-        <form th:action="@{/deleteUser}" method="get">
-          <input type="hidden" name="userId" th:value="${userS.id}"/>
+        <form th:action="@{users/deleteUser}" method="get">
+          <input type="hidden" name="userId" th:value="${userS.userId}"/>
           <button type="submit">Delete</button>
         </form>
       </td>
@@ -43,6 +43,6 @@
 </table>
 <br>
 <input type="button" value="Add new user"
-  onclick="window.location.href = 'new'"/>
+  onclick="window.location.href = 'users/new'"/>
 </body>
 </html>

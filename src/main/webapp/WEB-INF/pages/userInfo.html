@@ -7,18 +7,18 @@
 <body>
 <h2>User info</h2>
 <br>
-<form th:method="post" th:action="@{/saveUser}" th:object="${newUser}">
+<form th:method="post" th:action="@{users/saveUser}" th:object="${newUser}">
 
-    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{userId}"/>
 
     <label for="name">Name: </label>
-    <input type="text" th:field="*{name}" id="name"/>
+    <input type="text" th:field="*{userName}" id="name"/>
     <br><br>
     <label for="surname">Surname: </label>
-    <input type="text" th:field="*{surname}" id="surname"/>
+    <input type="text" th:field="*{userSurname}" id="surname"/>
     <br><br>
     <label for="age">Age: </label>
-    <input type="text" th:field="*{age}" id="age"/>
+    <input type="text" th:field="*{userAge}" id="age"/>
     <br><br>
     <input type="submit" value="OK"/>
 </form>

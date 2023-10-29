@@ -9,63 +9,64 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private int userId;
 
     @Column(name = "name")
-    private String name;
+    private String userName;
 
     @Column(name = "surname")
-    private String surname;
+    private String userSurname;
 
     @Column(name = "age")
-    private int age;
+    private int userAge;
 
     public User() {
     }
 
     public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+        this.userName = name;
+        this.userAge = age;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int id) {
+        this.userId = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.userName = name;
     }
 
-    public int getAge() {
-        return age;
+    public int getUserAge() {
+        return userAge;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setUserAge(int age) {
+        this.userAge = age;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getUserSurname() {
+        return userSurname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setUserSurname(String surname) {
+        this.userSurname = surname;
     }
 
     @Override
     public String toString() {
-        return "User {" +
-                "id = " + id +
-                ", name = '" + name + '\'' +
-                ", age = " + age +
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userSurname='" + userSurname + '\'' +
+                ", userAge=" + userAge +
                 '}';
     }
 }
